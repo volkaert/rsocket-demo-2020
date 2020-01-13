@@ -13,6 +13,11 @@ Reference documentation about RSocket with Spring and Spring Boot:
 >
 >[RSocket section](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-rsocket) in the **Spring Boot** Reference Documentation 
  
+##### Slides
+Slides used as support during developer conferences or quickies can be found [here](https://cutt.ly/volkaert-rsocket).
+If you cannot access the link above (for example because your organization does not allow links to Google slides), there is [copy of the slides](slides.pdf) 
+in the repository (but this copy may not be as fresh as the [source slides](https://cutt.ly/volkaert-rsocket) hosted in Google slides).
+ 
 ##### Credit
 Those demos rely heavily on the [examples](https://github.com/b3rnoulli/rsocket-examples) provided by Rafał Kowalski.
 Rafał provides more details about RSocket and Spring Boot integration in its [blog](https://blog.grapeup.com/read/reactive-service-to-service-communication-with-rsocket-abstraction-over-the-rsocket-66).
