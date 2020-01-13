@@ -1,6 +1,6 @@
 demo:
     host: localhost
-    port: 7001
+    port: 7000
     resume-session-seconds: 60
 
 spring:

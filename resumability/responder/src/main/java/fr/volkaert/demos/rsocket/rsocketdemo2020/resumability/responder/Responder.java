@@ -6,6 +6,7 @@ import io.rsocket.RSocketFactory;
 import io.rsocket.transport.netty.server.TcpServerTransport;
 import io.rsocket.util.DefaultPayload;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,9 +19,14 @@ import java.time.Duration;
 @SpringBootApplication
 public class Responder implements CommandLineRunner {
 
-    private static final int SERVER_PORT = 7000;
-    static final String HOST = "localhost";
-    static final Duration RESUME_SESSION_DURATION = Duration.ofSeconds(60);
+    @Value("${demo.host:localhost}")
+    private String host;
+
+    @Value("${demo.port:7000}")
+    private int port;
+
+    @Value("${demo.resume-session-seconds:60}")
+    private int resumeSessionSeconds;
 
     public static void main(String[] args) {
         SpringApplication.run(Responder.class, args);
@@ -28,9 +34,11 @@ public class Responder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws InterruptedException {
+        Duration resumeSessionDuration = Duration.ofSeconds(resumeSessionSeconds);
+
         RSocketFactory.receive()
                 .resume()
-                .resumeSessionDuration(RESUME_SESSION_DURATION)
+                .resumeSessionDuration(resumeSessionDuration)
                 .acceptor((setup, sendingSocket) -> Mono.just(new AbstractRSocket() {
                     @Override
                     public Flux<Payload> requestStream(Payload payload) {
@@ -39,7 +47,7 @@ public class Responder implements CommandLineRunner {
                                 .map(t -> DefaultPayload.create(t.toString()));
                     }
                 }))
-                .transport(TcpServerTransport.create(HOST, SERVER_PORT))
+                .transport(TcpServerTransport.create(host, port))
                 .start()
                 .subscribe();
         log.info("Server running");

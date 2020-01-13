@@ -5,6 +5,7 @@ import io.rsocket.RSocketFactory;
 import io.rsocket.transport.netty.client.TcpClientTransport;
 import io.rsocket.util.DefaultPayload;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,9 +16,14 @@ import java.time.Duration;
 @SpringBootApplication
 public class Requester implements CommandLineRunner {
 
-    private static final int CLIENT_PORT = 7001;
-    static final String HOST = "localhost";
-    static final Duration RESUME_SESSION_DURATION = Duration.ofSeconds(60);
+    @Value("${demo.host:localhost}")
+    private String host;
+
+    @Value("${demo.port:7001}")
+    private int port;
+
+    @Value("${demo.resume-session-seconds:60}")
+    private int resumeSessionSeconds;
 
     public static void main(String[] args) {
         SpringApplication.run(Requester.class, args);
@@ -25,10 +31,12 @@ public class Requester implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        Duration resumeSessionDuration = Duration.ofSeconds(resumeSessionSeconds);
+
         RSocket socket = RSocketFactory.connect()
                 .resume()
-                .resumeSessionDuration(RESUME_SESSION_DURATION)
-                .transport(TcpClientTransport.create(HOST, CLIENT_PORT))
+                .resumeSessionDuration(resumeSessionDuration)
+                .transport(TcpClientTransport.create(host, port))
                 .start()
                 .block();
         socket.requestStream(DefaultPayload.create("dummy"))
