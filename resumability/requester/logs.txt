@@ -1,0 +1,80 @@
+2020-01-13 10:55:43.856  INFO 12881 --- [main] f.v.d.r.r.r.requester.Requester          : Starting Requester v1.0-SNAPSHOT on t460s with PID 12881 (/home/fabrice/dev/projects/rsocket/rsocket-demo-2020/resumability/requester/target/requester-1.0-SNAPSHOT.jar started by fabrice in /home/fabrice/dev/projects/rsocket/rsocket-demo-2020/resumability/requester)
+2020-01-13 10:55:43.860 DEBUG 12881 --- [main] f.v.d.r.r.r.requester.Requester          : Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2020-01-13 10:55:43.861  INFO 12881 --- [main] f.v.d.r.r.r.requester.Requester          : No active profile set, falling back to default profiles: default
+2020-01-13 10:55:45.169  INFO 12881 --- [main] f.v.d.r.r.r.requester.Requester          : Started Requester in 1.998 seconds (JVM running for 2.916)
+2020-01-13 10:55:45.487 DEBUG 12881 --- [reactor-tcp-epoll-1] i.r.resume.ResumableDuplexConnection     : client Resumable duplex connection started with connection: io.rsocket.transport.netty.TcpDuplexConnection@5d8593f6
+2020-01-13 10:55:45.548 DEBUG 12881 --- [reactor-tcp-epoll-1] i.r.resume.ResumableDuplexConnection     : Switching transport: client
+2020-01-13 10:55:45.556 DEBUG 12881 --- [reactor-tcp-epoll-1] i.r.resume.UpstreamFramesSubscriber      : Upstream subscriber requestN: 128
+2020-01-13 10:55:45.647 DEBUG 12881 --- [main] io.rsocket.FrameLogger                   : sending -> 
+Frame => Stream ID: 1 Type: REQUEST_STREAM Flags: 0b100000000 Length: 18
+Metadata:
+
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 64 75 6d 6d 79                                  |dummy           |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:46.797 DEBUG 12881 --- [reactor-tcp-epoll-1] io.rsocket.FrameLogger                   : receiving -> 
+Frame => Stream ID: 1 Type: NEXT Flags: 0b100000 Length: 7
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 30                                              |0               |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:46.802  INFO 12881 --- [reactor-tcp-epoll-1] f.v.d.r.r.r.requester.Requester          : Received data: [0]
+2020-01-13 10:55:47.768 DEBUG 12881 --- [reactor-tcp-epoll-1] io.rsocket.FrameLogger                   : receiving -> 
+Frame => Stream ID: 1 Type: NEXT Flags: 0b100000 Length: 7
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 31                                              |1               |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:47.770  INFO 12881 --- [reactor-tcp-epoll-1] f.v.d.r.r.r.requester.Requester          : Received data: [1]
+2020-01-13 10:55:48.769 DEBUG 12881 --- [reactor-tcp-epoll-1] io.rsocket.FrameLogger                   : receiving -> 
+Frame => Stream ID: 1 Type: NEXT Flags: 0b100000 Length: 7
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 32                                              |2               |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:48.771  INFO 12881 --- [reactor-tcp-epoll-1] f.v.d.r.r.r.requester.Requester          : Received data: [2]
+2020-01-13 10:55:49.768 DEBUG 12881 --- [reactor-tcp-epoll-1] io.rsocket.FrameLogger                   : receiving -> 
+Frame => Stream ID: 1 Type: NEXT Flags: 0b100000 Length: 7
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 33                                              |3               |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:49.770  INFO 12881 --- [reactor-tcp-epoll-1] f.v.d.r.r.r.requester.Requester          : Received data: [3]
+2020-01-13 10:55:50.768 DEBUG 12881 --- [reactor-tcp-epoll-1] io.rsocket.FrameLogger                   : receiving -> 
+Frame => Stream ID: 1 Type: NEXT Flags: 0b100000 Length: 7
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 34                                              |4               |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:50.770  INFO 12881 --- [reactor-tcp-epoll-1] f.v.d.r.r.r.requester.Requester          : Received data: [4]
+2020-01-13 10:55:51.768 DEBUG 12881 --- [reactor-tcp-epoll-1] io.rsocket.FrameLogger                   : receiving -> 
+Frame => Stream ID: 1 Type: NEXT Flags: 0b100000 Length: 7
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 35                                              |5               |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:51.769  INFO 12881 --- [reactor-tcp-epoll-1] f.v.d.r.r.r.requester.Requester          : Received data: [5]
+2020-01-13 10:55:52.769 DEBUG 12881 --- [reactor-tcp-epoll-1] io.rsocket.FrameLogger                   : receiving -> 
+Frame => Stream ID: 1 Type: NEXT Flags: 0b100000 Length: 7
+Data:
+         +-------------------------------------------------+
+         |  0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f |
++--------+-------------------------------------------------+----------------+
+|00000000| 36                                              |6               |
++--------+-------------------------------------------------+----------------+
+2020-01-13 10:55:52.770  INFO 12881 --- [reactor-tcp-epoll-1] f.v.d.r.r.r.requester.Requester          : Received data: [6]
